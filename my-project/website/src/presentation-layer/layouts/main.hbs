@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/spectre.css">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>Welcome</title>
+</head>
+<body>
+    <header>
+        <div class="topnav" id="topNav">
+            <div class="Menu">
+                <a class="active" href="/index?page=1">Home</a>
+                <a href="/about">About</a> 
+                <a href="/contact">Contact</a>
+                {{#if IndexPage}}
+                <a href="#footer" id="toFooter"> Footer </a>{{/if}}
+                {{#if isLoggedIn}}
+                 <div class="dropdown">
+                    <button class="dropbtn">Admin Settings 
+                     <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/upload">Upload</a>
+                        <a href="/categories">Categories</a>
+                        <a href="/orders">Orders</a>
+                    </div>
+                </div>
+                <form action="/logOut" method="POST">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <button class="LogOutBtn">Logout</button>
+                </form> 
+                {{/if}}
+            </div>
+            {{#if SearchError}}
+            <ul>
+                {{#each errorMSG}}
+                <li class="errorMSG"> {{this}} </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            {{#if showSearchBar}}
+            <div class="search-container">
+              <form action="/searching?" method="GET">
+                <input type="text" placeholder="Title Or Category " name="search" required>
+                <button id="searchBTN"type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            {{/if}}
+        </div>
+    </header>
+    <br>
+ 
+{{{body}}}
+
+    <footer> 
+        <div class ="footer" id="footer">
+            <div class = "FootSec" id="toTopDiv"><a href="#topNav" id="toTop"><h3> Top &#8593; </h3></a></div>
+            <div class = "FootSec"> 
+                <h4>Contact <span> US </span></h4>
+                <ul> 
+                    <li><a href = "/contact">Email: pickitngo@gmail.com</a></li>
+                    <li>Phone Number: 07 29757160 </li>
+                </ul>
+            </div>
+            <div class = "FootSec"> 
+                <a href = "/about">
+                    <h4>Briefly About <span> pickItNGo </span></h4>
+                    <p id = "AboutSummary">In This Page, You can buy used stuff from Me in a very good condition</p>
+                </a>
+            </div>
+        </div>
+        <div class="FootDiv"> 
+            {{#unless isLoggedIn}}
+            <a  id = "LoginBtn" href="/login">Login</a>
+            {{/unless}}
+            
+            <p id = "CopyR"> &copy;2020,pickitngo</p>
+        </div>
+    </footer>
+</body>
+</html>

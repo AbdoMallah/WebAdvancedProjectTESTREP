@@ -1,0 +1,40 @@
+<div class = "FormPages">
+        <div class="FormPagesHeader">
+            <h3>Upload A New Post </h3>
+            <p id="arrowDown"> &#10095; </p>
+        </div>
+        <div id = "FormPagesBody"> 
+            {{#if errMSG}}
+            <ul> 
+                {{#each errMSG}}
+                <li class="errorMSG"> {{this}} </li>
+                {{/each}}
+            </ul>            
+            {{/if}}
+            <div class="form-group">
+                <form action="/upload?_csrf={{csrfToken}}" method="POST" enctype="multipart/form-data">
+                    <label class="form-label" for="img">Select image:</label>
+                    <input class="form-input" type="file" id="img" name="img" required>
+                    <br>
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-input" type="text" name="title" placeholder="Ex: Bmw " required>
+                    <br>
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-input" type="text" name="description" placeholder="Ex: A very good Computer with intel i7 8700 processor and Nividia RTX 2070"></textarea>
+                    <br>
+                    <label class="form-label" for="price">Price</label>
+                    <input class="form-input" type="number" name="price" placeholder="Ex: 800$" required>
+                    <br>
+                    <label class="form-label" for=""> Category</label>
+                    <select class="form-select" name="category">
+                        {{#each categoriesValue}}
+                        <option value="{{this.Id}}">{{this.Name}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <br><hr>
+                    <button class="btn" id="sendBtn"> Upload </button>
+                </form>                
+            </div>
+        </div>
+    </div>

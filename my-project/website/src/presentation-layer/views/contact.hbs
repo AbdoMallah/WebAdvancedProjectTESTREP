@@ -1,0 +1,25 @@
+<section id = "contactForm">
+    <h2 id = "ContactTitle">Contact <span>US</span></h2>
+       {{#if emptyFieldError.length }}
+            <ul>
+                {{#each emptyFieldError}}
+                <li class="errorMSG"> {{this}} </li>
+                {{/each}}
+            </ul>            
+            {{/if}}
+    <p> Don't Want To Send An Email, Don't Worry You Can Call Us. <br><span> Phone Number: 0729757160 </span> </p>
+    <div class="form-group" >
+        <form action="/contact" method="POST" >
+            <label class="form-label" for="email"> Email *</label>
+            <input class="form-input" type="text" name="email" placeholder="Ex: example@example.com" required>
+
+            <label class="form-label" for="subject">Subject *</label>
+            <input class="form-input" type="text" name="subject" placeholder="Ex: Iphone X">
+
+            <label class="form-label" for="msgContent"> Message Content *</label>
+            <textarea  class="form-input" name="msgContent" placeholder="Ex: Do you have a new/unused Iphone X?"></textarea>
+            <br>
+            <button class="btn" id="sendBtn"> Send </button>
+        </form>
+    </div>
+</section>

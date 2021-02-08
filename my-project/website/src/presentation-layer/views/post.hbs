@@ -1,0 +1,33 @@
+<div class = "postSection">
+    {{#if postContent}}
+        <img src="../{{postContent.Image}}" alt="img" class = "img-responsive" id="postIMG">
+        <div id = "postDiv">
+            <div class = "postInfo">
+                <h2><strong>Title: </strong> {{postContent.Title}} </h2>
+                <p><strong>Price: </strong>{{postContent.Price}} $</p>
+                <p><strong>Description: </strong> {{postContent.Description}}</p>
+            </div>
+          
+
+        <div class="sellerSection"> 
+            <h3>Seller Contact Information</h3>
+            <div class= "sellerContact">
+                <ul>
+                    <li>By: Abdel Rahman Mallah  </li>
+                    <li>Email: pickitngo@gmail.com </li>
+                    <li>Phone Number: 07 29757160 </li>
+                </ul>
+            </div>
+        </div>
+        {{#if isLoggedIn}}
+        <a href ="/post/editP/{{postContent.Id}}" id="sendBtn"> Edit </a>
+        <form  action="/post/deleteP/{{postContent.Id}}" method="POST">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button id="deleteBtn"> DELETE </button>
+        </form>
+        {{else}}
+        <a href="/order/{{postContent.Id}}" id="sendBtn"> Order </a>
+        {{/if}}
+    {{/if}}
+    </div> 
+</div>

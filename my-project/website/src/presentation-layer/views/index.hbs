@@ -1,0 +1,63 @@
+
+<section class = "bodySection">
+    {{#if errMSG}}
+    <ul>
+        {{#each errMSG}}
+        <li class="errorMSG"> {{this}} </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+     <diV>
+        <h5> Welcome to PickItNGo, Here you will find items you may need with very good price</h5>
+        <div class = "posts">
+        {{#each results.postsResults}}
+            <a href="/post/{{this.Id}}" class="postLink">
+            <section class = "post"> 
+                <img src="{{this.Image}}" class="img-responsive" id="postImage" alt="Post Image"> </img>
+                <div id = "postInfo">
+                    <h3>{{this.Title}}</h3>
+                    
+                    <p>Price:{{this.Price}} $</p>
+                    <p class="postParagraph">{{this.Description}}</p>
+                </div>
+            </section>
+            </a>
+            {{else}}
+            <p class="btn btn-error">No Content Yet OR All the posts are ordered :D </p>
+        {{/each}}  
+        </div>
+        </diV>
+
+    <div class = "LastestPosts">
+        <h3>Lastest Posts</h3>
+        {{#each limitData}}
+        <div class = "lastPost">
+            <a class="lastPostLink" href = "post/{{this.Id}}"> 
+                <div class="postContent">
+                    <div class="infoDiv">
+                        <h4>{{this.Title}} </h4>
+                        <h5> {{this.Price}} $</h5>
+                    </div>
+                    <div class="dateDiv">
+                        <h6>Uploaded At:</h6>
+                        <p>{{this.Date}} </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{else}}
+        <p class="btn btn-error">No Content Yet OR All the posts are orders :D </p>
+        {{/each}}
+    </div>    
+</section>
+<div class="pagination">
+    {{#if prevPage}}
+    <a id="prevPage" href="/index?page={{prevPage.page}}">&laquo; Previous Page</a>
+    {{/if}}
+    {{#each amountPages}}
+    <a class="pagesNumbers" href="/index?page={{this}}">{{this}}</a>
+    {{/each}}
+    {{#if nextPage}}
+    <a id="nextPage" href="/index?page={{nextPage.page}}">Next Page &raquo; </a>
+    {{/if}}
+</div>

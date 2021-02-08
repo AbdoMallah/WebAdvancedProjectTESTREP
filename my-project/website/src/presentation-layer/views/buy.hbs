@@ -1,0 +1,40 @@
+<div class = "FormPages">
+    {{#if selectedPost}}
+    <div class="postOnBuyPage">
+        <img src="../{{selectedPost.Image}}" class="img-responsive">
+        <div> 
+            <h3>Post Tilte: {{selectedPost.Title}}</h3>
+            <h3>Item Price: {{selectedPost.Price}}</h3>
+        </div> 
+    </div>
+    <div id = "FormPagesBody"> 
+        {{#if errMSG}}
+        <ul> 
+            {{#each errMSG}}
+            <li class="errorMSG"> {{this}} </li>
+            {{/each}}
+        </ul>            
+        {{/if}}
+        <hr>
+        <h2>Fill Your Infomation </h2> 
+            <div class="form-group">
+                <form action="/order/post={{selectedPost.Id}}" method="POST">
+                    <label class="form-label" for="name">Your Name*</label>
+                    <input class="form-input" type="text" name="name" placeholder="Ex: John Cena " required>
+                    <br>
+                    <label class="form-label" for="email">Your Email*</label>
+                    <input class="form-input" type="text" name="email" placeholder="Ex:example@example.com " required>
+                    <br>
+                    <label class="form-label" for="address">Your Address*</label>
+                    <input class="form-input" type="text" name="address" placeholder="Östra Standgatan 50A">
+                    <br>
+                    <label class="form-label" for="zipCode"> Your ZIP Code*</label>
+                    <input class="form-input" type="number" name="zipCode" placeholder="Ex: 123456" required>
+                    <br><hr>
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <button class = "btn" id ="sendBtn"> Buy </button>
+                </form>                
+            </div>
+        {{/if}}
+    </div>
+</div>

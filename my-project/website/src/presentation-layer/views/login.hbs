@@ -1,0 +1,22 @@
+    <section id = "contactForm">
+        <h2 id = "ContactTitle">Login</h2>
+        <div class="form-group">
+            {{#if validationErr.length }}
+            <ul>
+                {{#each validationErr}}
+                <li class="errorMSG"> {{this}} </li>
+                {{/each}}
+            </ul>            
+            {{/if}}
+            <form action="/login" method = "POST"> 
+                <label class="form-label" for="username"> UserName*</label>
+                <input class="form-input" type="text" placeholder="JohnCena" name="username" id = "Username" required>
+                
+                <label class="form-label" for="password"> Password (6 Characters at leats)*</label>
+                <input class="form-input" type="password" placeholder="*******" name="password" id = "Password" required>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <br>
+                <button class = "btn" id ="sendBtn"> Login </button>
+            </form>
+        </div>
+    </section>
