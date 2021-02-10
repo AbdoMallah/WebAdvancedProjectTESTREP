@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/spectre.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="/CSS/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -34,6 +34,10 @@
                     <button class="LogOutBtn">Logout</button>
                 </form> 
                 {{/if}}
+                {{#unless isLoggedIn}}
+                <a href="/login">Login</a>
+                <a href="/sign_in">Sign Up</a>
+                {{/unless}}
             </div>
             {{#if SearchError}}
             <ul>
@@ -73,11 +77,7 @@
                 </a>
             </div>
         </div>
-        <div class="FootDiv"> 
-            {{#unless isLoggedIn}}
-            <a  id = "LoginBtn" href="/login">Login</a>
-            {{/unless}}
-            
+        <div class="FootDiv">            
             <p id = "CopyR"> &copy;2020,pickitngo</p>
         </div>
     </footer>

@@ -16,7 +16,9 @@
     "mysql2": "^2.2.5",
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "awilix": "^4.3.1"
+    
 
   }
 }

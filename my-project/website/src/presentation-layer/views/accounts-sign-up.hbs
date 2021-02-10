@@ -1,0 +1,34 @@
+    <section id = "contactForm">
+        <h2 id = "ContactTitle">Sign Up</h2>
+        <div class="form-group">
+            {{#if validationErr.length }}
+            <ul>
+                {{#each validationErr}}
+                <li class="errorMSG"> {{this}} </li>
+                {{/each}}
+            </ul>            
+            {{/if}}
+            <form action="/sign-up" method = "POST"> 
+                <label class="form-label" for="username"> Username*</label>
+                <input class="form-input" type="text" placeholder="Abdo123" name="username" id = "Username" required>
+                
+                <label class="form-label" for="firstname"> Firstname*</label>
+                <input class="form-input" type="text" placeholder="Abdel Rahman" name="firstname" id = "Lastname" required>
+                
+                <label class="form-label" for="username"> Lastsname*</label>
+                <input class="form-input" type="text" placeholder="Mallah" name="lastname" id = "Lastname" required>
+                
+                <label class="form-label" for="mobile_number"> Mobile Number*</label>
+                <input class="form-input" type="number" placeholder="0712345678" name="mobile-number" id = "MobileNumber" required>
+                
+                 <label class="form-label" for="email"> Email*</label>
+                <input class="form-input" type="Email" placeholder="Mallah" name="email" id = "Email" required>
+
+                <label class="form-label" for="password"> Password (6 Characters at leats)*</label>
+                <input class="form-input" type="password" placeholder="*******" name="password" id = "Password" required>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <br>
+                <button class = "btn" id ="sendBtn"> Sign Up </button>
+            </form>
+        </div>
+    </section>

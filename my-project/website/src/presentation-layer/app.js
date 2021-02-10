@@ -1,7 +1,7 @@
 const express = require('express') 
 const path = require('path')
 const expressHandleBars = require('express-handlebars')
-const db = require('../data-access-layer/db')
+const db = require('../data-access-layer/account-repository.js')
 const app = express()
 
 app.engine('hbs', expressHandleBars({
